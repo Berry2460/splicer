@@ -15,12 +15,12 @@ if __name__ == '__main__':
             index+=1
         except:
             break
-    if True:
+    try:
         form=open('S0.OOF', 'rb')
         final=pickle.loads(form.read())
         form.close()
         out=open(str(final.name), 'wb')
         out.write(pickle.loads(data))
         out.close()
-    else:
+    except:
         pass
