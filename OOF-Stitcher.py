@@ -1,12 +1,9 @@
 import pickle
 
-class out:
-    def __init__(self, name):
-        self.name=name
+index=0
+data=b''
 
 if __name__ == '__main__':
-    index=1
-    data=b''
     while True:
         try:
             f=open('S'+str(index)+'.OOF', 'rb')
@@ -16,11 +13,9 @@ if __name__ == '__main__':
         except:
             break
     try:
-        form=open('S0.OOF', 'rb')
-        final=pickle.loads(form.read())
-        form.close()
-        out=open(str(final.name), 'wb')
-        out.write(pickle.loads(data))
+        data=pickle.loads(data)
+        out=open(data[0], 'wb')
+        out.write(data[1])
         out.close()
     except:
         pass

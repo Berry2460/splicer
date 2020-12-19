@@ -1,36 +1,32 @@
 import pickle
 
 mb=8192000
+data=[]
 
-class out:
-    def __init__(self, name):
-        self.name=name
-
-def make(start, end, i, data):
-    print('Generating OOF '+str(i+1)+'...')
+def make(start, end, i):
+    global data
+    print('Generating OOF '+str(i)+'...')
     if end > len(data):
         end=len(data)
-    f=open('S'+str(i+1)+'.OOF','wb')
+    f=open('S'+str(i)+'.OOF','wb')
     for i in range(start, end):
         f.write(bytes([data[i]]))
     f.close()
+
 if __name__ == '__main__':
     valid=False
     while not valid:
         name=str(input('FILE NAME:'))
         try:
-            index=out(name)
+            data.append(name)
             file=open(name, 'rb')
-            data=pickle.dumps(file.read())
+            data.append(file.read())
             file.close()
-            form=open('S0.OOF', 'wb')
-            form.write(pickle.dumps(index))
-            form.close()
-            num=int(len(data)/mb)+1
+            num=int(len(data[1])/mb)+1
+            data=pickle.dumps(data)
             valid=True
-            print('Generating '+str(num+1)+ ' OOF\'s...')
-            print('Generating OOF 0...')
+            print('Generating '+str(num)+ ' OOF\'s...')
             for i in range(0,num):
-                make(i*mb, i*mb+mb, i, data)
+                make(i*mb, i*mb+mb, i)
         except:
             print('INVALID FILE NAME!\n')
