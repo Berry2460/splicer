@@ -2,7 +2,6 @@ import pickle
 
 mb=8192000
 data=[]
-processes=[]
 
 def make(data, i):
     print('Generating OOF '+str(i)+'...')
