@@ -7,6 +7,7 @@ if __name__ == '__main__':
     while True:
         try:
             f=open('S'+str(index)+'.OOF', 'rb')
+            print('Stitching S'+str(index)+'.OOF')
             data+=f.read()
             f.close()
             index+=1

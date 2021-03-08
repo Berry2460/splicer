@@ -2,15 +2,12 @@ import pickle
 
 mb=8192000
 data=[]
+processes=[]
 
-def make(start, end, i):
-    global data
+def make(data, i):
     print('Generating OOF '+str(i)+'...')
-    if end > len(data):
-        end=len(data)
     f=open('S'+str(i)+'.OOF','wb')
-    for i in range(start, end):
-        f.write(bytes([data[i]]))
+    f.write(data)
     f.close()
 
 if __name__ == '__main__':
@@ -27,6 +24,6 @@ if __name__ == '__main__':
             valid=True
             print('Generating '+str(num)+ ' OOF\'s...')
             for i in range(0,num):
-                make(i*mb, i*mb+mb, i)
+                make(data[slice(i*mb, i*mb+mb, 1)], i)
         except:
             print('INVALID FILE NAME!\n')
