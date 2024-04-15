@@ -1,6 +1,6 @@
 import pickle
 
-mb=8192000
+mb=25600000
 data=[]
 
 def make(data, i):
